@@ -3,36 +3,32 @@
 <title>SlideShow Example</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style/style.css">
-<h1>Slideshow Example</h1>
+<h1>Auto Slideshow Example</h1>
 
 <div>
 	<img class="manual-slideshow" src="resources/picture001.jpg" style="width: 100%">
 	<img class="manual-slideshow" src="resources/picture002.jpg" style="width:100%">
 	<img class="manual-slideshow" src="resources/picture003.jpg"
 	style="width:100%">
-	<button class="manual-slideshow-button-left" onclick="plusDivs(-1)">&#10094;</button>
-	<button class="manual-slideshow-button-right" onclick="plusDivs(1)">&#10095;</button>
 	</div>
 <body>
 
 <script>
-var slideIndex = 1;
-showDivs(slideIndex);
+var slideIndex = 0;
+showDivs();
 
-function plusDivs(n){
-	showDivs(slideIndex += n);
-}
-
-function showDivs(n){
+function showDivs(){
 	var i;
 	var x = document.getElementsByClassName("manual-slideshow");
-	if(n > x.length) { slideIndex = 1; }
-    if(n < 1) {slideIndex = x.length; }
+	
     for(i = 0; i < x.length; i++)
     {
     	x[i].style.display = "none";
     }
+    slideIndex++;
+if(slideIndex > x.length) { slideIndex = 1; }
     x[slideIndex - 1].style.display = "block";
+    setTimeout(showDivs, 2000);
 }
 </script>
 </body>
