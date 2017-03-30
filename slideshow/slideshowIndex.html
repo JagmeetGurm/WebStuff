@@ -3,7 +3,33 @@
 <title>SlideShow Example</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style/style.css">
+<h1>Auto Slideshow Example</h1>
 
+<div>
+	<img class="auto-slideshow" src="resources/picture001.jpg" style="width: 100%">
+	<img class="auto-slideshow" src="resources/picture002.jpg" style="width:100%">
+	<img class="auto-slideshow" src="resources/picture003.jpg"
+	style="width:100%">
+	</div>
 <body>
+
+<script>
+var slideIndex = 0;
+showDivs();
+
+function showDivs(){
+	var i;
+	var x = document.getElementsByClassName("auto-slideshow");
+	
+    for(i = 0; i < x.length; i++)
+    {
+    	x[i].style.display = "none";
+    }
+    slideIndex++;
+if(slideIndex > x.length) { slideIndex = 1; }
+    x[slideIndex - 1].style.display = "block";
+    setTimeout(showDivs, 2000);
+}
+</script>
 </body>
 </html>
