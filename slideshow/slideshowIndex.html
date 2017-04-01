@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<!-- This code is referenced from the W3school.com website:
-	https://www.w3schools.com/w3css/w3css_slideshow.asp -->
-<!-- This is just for study purpose -->
+
 <html>
 <title>SlideShow Example</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style/style.css">
-<h1>Auto Slideshow Example Two</h1>
 
-<div id="gallery" class="container">
-	<img id="slideshow-image" class="auto-slideshow" src="resources/picture001.jpg" style="width: 70%; height:50%">
-	
-	</div>
 <body>
+
+<h1>Auto Slideshow Example Two</h1>
+<div>
+	<img id="slideshow-image" class="auto-slideshow" src="resources/picture001.jpg" style="width: 70%; height:50%">
+</div>
 
 <script>
 var slideIndex = 0;
-var slides = [];
+var slides = []; //array of slide images path
 slides.push("resources/picture001.jpg");
 slides.push("resources/picture002.jpg");
 slides.push("resources/picture003.jpg");
