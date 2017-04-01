@@ -6,33 +6,36 @@
 <title>SlideShow Example</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style/style.css">
-<h1>Auto Slideshow Example</h1>
+<h1>Auto Slideshow Example Two</h1>
 
-<div>
-	<img class="auto-slideshow" src="resources/picture001.jpg" style="width: 70%">
-	<img class="auto-slideshow" src="resources/picture002.jpg" style="width:70%">
-	<img class="auto-slideshow" src="resources/picture003.jpg"
-	style="width:70%">
+<div id="gallery" class="container">
+	<img id="slideshow-image" class="auto-slideshow" src="resources/picture001.jpg" style="width: 70%; height:50%">
+	
 	</div>
 <body>
 
 <script>
 var slideIndex = 0;
-showDivs();
-
-function showDivs(){
-	var i;
-	var x = document.getElementsByClassName("auto-slideshow");
-	
-    for(i = 0; i < x.length; i++)
-    {
-    	x[i].style.display = "none";
-    }
-    slideIndex++;
-if(slideIndex > x.length) { slideIndex = 1; }
-    x[slideIndex - 1].style.display = "block";
-    setTimeout(showDivs, 2000);
-}
+var slides = [];
+slides.push("resources/picture001.jpg");
+slides.push("resources/picture002.jpg");
+slides.push("resources/picture003.jpg");
+slides.push("resources/picture004.jpg");
+slides.push("resources/picture005.jpg");
+slides.push("resources/picture006.jpg");
+slides.push("resources/picture007.jpg");
+Slideshow();
+function Slideshow() {
+    
+	   if(slideIndex < slides.length)
+	    {
+	    	document.getElementById('slideshow-image').src = 
+	    	slides[slideIndex];
+	    	slideIndex++;
+	    }
+	    if(slideIndex == slides.length) slideIndex = 0;
+		setTimeout(Slideshow, 2000);//change img every 3 seconds
+	}
 </script>
 </body>
 </html>
