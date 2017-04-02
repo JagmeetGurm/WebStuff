@@ -1,37 +1,36 @@
 <!DOCTYPE html>
-<!-- This code is referenced from the W3school.com website:
-	https://www.w3schools.com/w3css/w3css_slideshow.asp -->
+
 <html>
 <title>SlideShow Example</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style/style.css">
-<h1>Auto Slideshow Example</h1>
 
-<div>
-	<img class="auto-slideshow" src="resources/picture001.jpg" style="width: 70%">
-	<img class="auto-slideshow" src="resources/picture002.jpg" style="width:70%">
-	<img class="auto-slideshow" src="resources/picture003.jpg"
-	style="width:70%">
-	</div>
 <body>
+
+<h1>Auto Slideshow Example Two</h1>
+<div>
+	<img id="slideshow-image" class="auto-slideshow" src="resources/picture001.jpg" style="width:200px; height:100px">
+</div>
 
 <script>
 var slideIndex = 0;
-showDivs();
+var slides = []; //array of slide images path
+slides.push("resources/picture001.jpg");
+slides.push("resources/picture002.jpg");
+slides.push("resources/picture003.jpg");
 
-function showDivs(){
-	var i;
-	var x = document.getElementsByClassName("auto-slideshow");
-	
-    for(i = 0; i < x.length; i++)
-    {
-    	x[i].style.display = "none";
-    }
-    slideIndex++;
-if(slideIndex > x.length) { slideIndex = 1; }
-    x[slideIndex - 1].style.display = "block";
-    setTimeout(showDivs, 2000);
-}
+Slideshow();
+function Slideshow() {
+    
+	   if(slideIndex < slides.length)
+	    {
+	    	document.getElementById('slideshow-image').src = 
+	    	slides[slideIndex];
+	    	slideIndex++;
+	    }
+	    if(slideIndex == slides.length) slideIndex = 0;
+		setTimeout(Slideshow, 2000);//change img every 3 seconds
+	}
 </script>
 </body>
 </html>
