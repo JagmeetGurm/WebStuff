@@ -14,6 +14,7 @@
 <div>
 <img id="slideshow-image2" class="auto-slideshow" src="resources/picture004.jpg" style="width:200px; height:100px">
 </div>
+<script src="my.js"></script>
 <script>
 var slides = []; //array of slide images path
 slides.push("resources/picture001.jpg");
@@ -26,36 +27,8 @@ slides2.push("resources/picture005.jpg");
 slides2.push("resources/picture006.jpg");
 
 var secondShow = new SlideShow(slides2, 'slideshow-image2', "secondShow");
-
-function SlideShow(mySlides, img, name)          
-{
-  this.mySlides = mySlides;
-  this.image = img;
-  this.name = name;
-  this.slideIndex = 0;
-  }
-
-SlideShow.prototype.play = SlidePlay;  
 firstShow.play(); 
 secondShow.play();
-
-function SlidePlay()       
-{
-  with(this)
-  {
-if(slideIndex < mySlides.length)
-	    {
-	    	document.getElementById(image).src = 
-	    	mySlides[slideIndex];
-	    	
-	    	slideIndex++;
-
-	    }
-	    if(slideIndex == mySlides.length) slideIndex = 0;
-		setTimeout(name+'.play()', 2000);
-  	
-  }
-}
 //window.onLoad=SlideShow1.play(); SlideShow2.play();
 /*
 var slideIndex = 0;
