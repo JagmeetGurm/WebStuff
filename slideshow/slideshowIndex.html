@@ -11,26 +11,100 @@
 <div>
 	<img id="slideshow-image" class="auto-slideshow" src="resources/picture001.jpg" style="width:200px; height:100px">
 </div>
-
+<div>
+<img id="slideshow-image2" class="auto-slideshow" src="resources/picture004.jpg" style="width:200px; height:100px">
+</div>
 <script>
+var slides = []; //array of slide images path
+slides.push("resources/picture001.jpg");
+slides.push("resources/picture002.jpg");
+slides.push("resources/picture003.jpg");
+var firstShow = new SlideShow(slides, 'slideshow-image', "firstShow");
+var slides2 = [];
+slides2.push("resources/picture004.jpg");
+slides2.push("resources/picture005.jpg");
+slides2.push("resources/picture006.jpg");
+
+var secondShow = new SlideShow(slides2, 'slideshow-image2', "secondShow");
+
+function SlideShow(mySlides, img, name)          
+{
+  this.mySlides = mySlides;
+  this.image = img;
+  this.name = name;
+  this.slideIndex = 0;
+  }
+
+SlideShow.prototype.play = SlidePlay;  
+firstShow.play(); 
+secondShow.play();
+
+function SlidePlay()       
+{
+  with(this)
+  {
+if(slideIndex < mySlides.length)
+	    {
+	    	document.getElementById(image).src = 
+	    	mySlides[slideIndex];
+	    	
+	    	slideIndex++;
+
+	    }
+	    if(slideIndex == mySlides.length) slideIndex = 0;
+		setTimeout(name+'.play()', 2000);
+  	
+  }
+}
+//window.onLoad=SlideShow1.play(); SlideShow2.play();
+/*
 var slideIndex = 0;
 var slides = []; //array of slide images path
 slides.push("resources/picture001.jpg");
 slides.push("resources/picture002.jpg");
 slides.push("resources/picture003.jpg");
+var slideIndex2 = 0;
+var slides2 = [];
+slides2.push("resources/picture004.jpg");
+slides2.push("resources/picture005.jpg");
+slides2.push("resources/picture006.jpg");
+var first = Slideit(slides, 'slideshow-image', 'first');
 
-Slideshow();
-function Slideshow() {
-    
-	   if(slideIndex < slides.length)
+function Slideit(mySlides, startImg, name){
+	this.sli = mySlides;
+	this.startImage = startImg;
+	this.nm = name;
+}
+Slideit.prototype.play = SlidePlay;
+
+function SlidePlay() {
+	with(this)
+	{
+	   if(slideIndex < sli.length)
 	    {
-	    	document.getElementById('slideshow-image').src = 
-	    	slides[slideIndex];
+	    	document.getElementById(startImage).src = 
+	    	sli[slideIndex];
+	    	
 	    	slideIndex++;
+
 	    }
-	    if(slideIndex == slides.length) slideIndex = 0;
-		setTimeout(Slideshow, 2000);//change img every 3 seconds
+	    if(slideIndex == sli.length) slideIndex = 0;
+		setTimeout(name+'.play()', 2000);//change img every 3 seconds
 	}
+}
+window.onLoad=first.play();
+	/*function Slideshow2() {
+    
+	   if(slideIndex2 < slides2.length)
+	    {
+	    	document.getElementById('slideshow-image2').src = 
+	    	slides2[slideIndex2];
+	    	slideIndex2++;
+	    }
+	    if(slideIndex2 == slides2.length) slideIndex2 = 0;
+		setTimeout(Slideshow2, 2000);//change img every 3 seconds
+	}*/
+
 </script>
 </body>
 </html>
